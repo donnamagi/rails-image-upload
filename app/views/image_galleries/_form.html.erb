@@ -1,0 +1,6 @@
+<%= form_with(model: image_gallery, local: true, multipart: true) do |form| %>
+  <%= form.fields_for :images do |images| %>
+    <%= images.file_field :picture, direct_upload: true, multiple: true %>
+  <% end %>
+  <%= form.submit %>
+<% end %>

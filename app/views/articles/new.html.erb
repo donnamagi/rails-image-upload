@@ -12,6 +12,8 @@
       <%= form.text_area :text %>
     </div>
 
+    <%= turbo_frame_tag 'image_gallery', src: new_image_gallery_path %>
+
     <div>
       <%= form.submit %>
     </div>

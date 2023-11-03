@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_03_152241) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_03_162749) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_03_152241) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "image_galleries", force: :cascade do |t|
+    t.string "galleryable_type"
+    t.bigint "galleryable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["galleryable_type", "galleryable_id"], name: "index_image_galleries_on_galleryable"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "image_gallery_id"
+    t.integer "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_gallery_id"], name: "index_images_on_image_gallery_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "images", "image_galleries"
 end

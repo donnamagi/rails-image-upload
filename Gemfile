@@ -15,6 +15,9 @@ gem "pg"
 # For reordering images 
 gem 'acts_as_list'
 
+# For image uploads in base64
+gem 'active_storage_base64'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 

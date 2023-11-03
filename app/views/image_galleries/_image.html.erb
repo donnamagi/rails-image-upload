@@ -1,0 +1,6 @@
+<div id="image_<%= image.id %>" data-id="<%= image.id %>">
+  <div>
+    <%= image_tag(image.picture, :height => "40px") %>
+    <p><%= image.picture.filename.to_s %> </p>
+  </div>
+</div>

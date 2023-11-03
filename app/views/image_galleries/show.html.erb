@@ -1,0 +1,7 @@
+<%= turbo_frame_tag 'image_gallery' do %>
+  <h6>Uploaded images</h6>
+  <% @image_gallery.images.each do |image| %>
+    <%= render partial: 'image', locals: { image: image } %>
+  <% end %> 
+  <%= render partial: 'form', locals: { image_gallery: @image_gallery } %> <%# to be able to add more images %>
+<% end %>

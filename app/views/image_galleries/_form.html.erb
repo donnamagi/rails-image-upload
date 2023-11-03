@@ -1,6 +1,8 @@
-<%= form_with(model: image_gallery, local: true, multipart: true) do |form| %>
+<%= form_with(model: image_gallery, local: true, multipart: true, html: {"data-controller" => "multi-upload"}) do |form| %>
   <%= form.fields_for :images do |images| %>
-    <%= images.file_field :picture, direct_upload: true, multiple: true %>
+    <div data-multi-upload-target="inputButton">
+      <%= images.file_field :picture, direct_upload: true, multiple: true, data: {"multi-upload-target": "files", "action": "input->multi-upload#submitOnInput"} %>
+    </div>
   <% end %>
-  <%= form.submit %>
+  <%= form.submit 'Add', data: {"multi-upload-target" => "submitButton"}, style: "display: none;" %>
 <% end %>

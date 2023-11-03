@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
-    articles = Article.all
+    @articles = Article.all
   end
 
   def new
@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(params[:article])
+    @article = Article.new(article_params)
 
     if params[:image_gallery_id].present?
       image_gallery = ImageGallery.find(params[:image_gallery_id])
@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
     end
 
     if @article.save
-      redirect_to @article
+      redirect_to articles_path
     else
       render :new
     end

@@ -12,11 +12,7 @@
       <%= form.text_area :text %>
     </div>
 
-    <% if @article.image_gallery %>
-      <%= turbo_frame_tag 'image_gallery', src: image_gallery_path(@article.image_gallery) %>
-    <% else %>
-      <%= turbo_frame_tag 'image_gallery', src: new_image_gallery_path %>
-    <% end %>
+    <%= turbo_frame_tag 'image_gallery', src: new_image_gallery_path %>
 
     <div>
       <%= form.submit %>

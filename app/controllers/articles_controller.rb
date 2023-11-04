@@ -1,7 +1,7 @@
 class ArticlesController < ApplicationController
 
   def index
-    @articles = Article.all
+    @articles = Article.all.includes({:image_gallery => :images}).last(3)
   end
 
   def new
@@ -11,12 +11,9 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    if params[:image_gallery_id].present?
-      image_gallery = ImageGallery.find(params[:image_gallery_id])
-      image_gallery.update(galleryable: @article) if image_gallery.galleryable_id.blank?
-    end
-
     if @article.save
+      # tying the image gallery to the article
+      associate_image_gallery_with(@article) if params[:image_gallery_id].present?
       redirect_to articles_path
     else
       render :new

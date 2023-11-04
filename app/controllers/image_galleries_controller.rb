@@ -1,6 +1,7 @@
 class ImageGalleriesController < ApplicationController
 
-  before_action :set_gallery, only: %i[show]
+  before_action :set_gallery, only: %i[show update delete_image]
+  before_action :set_image, only: %i[delete_image]
 
   def show; end 
 
@@ -25,6 +26,29 @@ class ImageGalleriesController < ApplicationController
     end 
   end
 
+  def update
+    index = params[:image_gallery][:images_attributes].keys.last
+    handle_multiple_images if params[:image_gallery][:images_attributes][index][:picture].is_a?(Array)
+
+    respond_to do |format|
+      if @image_gallery.update(image_gallery_params)
+        format.html {redirect_to image_gallery_path(@image_gallery)}
+      else
+        format.html {render :edit, status: :unprocessable_entity}
+      end
+    end 
+  end
+
+  def delete_image
+    @image.destroy
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.remove("image_#{@image.id}")
+      end
+      format.html { redirect_to image_gallery_path(@image_gallery) }
+    end
+  end
+
   private
 
   def handle_multiple_images
@@ -43,6 +67,10 @@ class ImageGalleriesController < ApplicationController
 
   def set_gallery
     @image_gallery = ImageGallery.find(params[:id])
+  end
+
+  def set_image
+    @image = Image.find(params[:image_id])
   end
 
   def image_gallery_params

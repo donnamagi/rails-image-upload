@@ -1,11 +1,21 @@
 <div>
   <h1>Articles</h1>
+
   <% @articles.each do |article| %>
     <div>
       <h2><%= article.title %></h2>
       <p><%= article.text %></p>
+
+      <% if article.image_gallery.present? %>
+        <% article.image_gallery.images.each do |image| %>
+          <%= image_tag(image.picture, :height => "40px") %>
+          <p> <%= image.picture.filename.to_s %> </p>
+        <% end %>
+      <% end %>
     </div>
     <hr/>
   <% end %>
+
+  <%= link_to 'New article', new_article_path %>
 
 </div>

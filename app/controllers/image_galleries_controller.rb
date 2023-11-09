@@ -1,7 +1,7 @@
 class ImageGalleriesController < ApplicationController
 
-  before_action :set_gallery, only: %i[show update delete_image]
-  before_action :set_image, only: %i[delete_image]
+  before_action :set_gallery, only: %i[show update delete_image, move_image]
+  before_action :set_image, only: %i[delete_image, move_image]
 
   def show; end 
 
@@ -47,6 +47,11 @@ class ImageGalleriesController < ApplicationController
       end
       format.html { redirect_to image_gallery_path(@image_gallery) }
     end
+  end
+
+  def move_image
+    @image.insert_at(params[:position].to_i) #insert_at is a method from the acts_as_list gem
+    head :ok #send back 200 
   end
 
   private

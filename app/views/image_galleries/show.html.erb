@@ -1,8 +1,10 @@
 <%= turbo_frame_tag 'image_gallery' do %>
   <h6>Uploaded images</h6>
-  <% @image_gallery.images.each do |image| %>
-    <%= render partial: 'image', locals: { image: image} %>
-  <% end %> 
+  <div data-controller="drag" data-drag-url="/image_galleries/<%= @image_gallery.id %>/move_image/:id">
+    <% @image_gallery.images.each do |image| %>
+      <%= render partial: 'image', locals: { image: image} %>
+    <% end %> 
+  </div>
   <%= render partial: 'form', locals: { image_gallery: @image_gallery } %> <%# to be able to add more images %>
   <%# image_gallery_id is picked up by the parent object's controller to be able to create the association %>
   <%= hidden_field_tag :image_gallery_id, @image_gallery.id %> 

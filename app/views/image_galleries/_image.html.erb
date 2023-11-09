@@ -1,4 +1,4 @@
-<div>
+<div data-id="<%= image.id %>">
   <%= image_tag(image.picture, :height => "40px") %>
   <p><%= image.picture.filename.to_s %> </p>
   <%= button_to('delete image', delete_image_image_gallery_path(@image_gallery, image), method: :delete) %>

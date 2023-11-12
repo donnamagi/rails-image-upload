@@ -1,5 +1,6 @@
 <%= turbo_frame_tag 'image_gallery' do %>
   <h6>Uploaded images</h6>
+  <p> Drag to reorder existing images</p>
   <div data-controller="drag" data-drag-url="/image_galleries/<%= @image_gallery.id %>/move_image/:id">
     <% @image_gallery.images.each do |image| %>
       <%= render partial: 'image', locals: { image: image} %>

@@ -15,6 +15,8 @@ This Rails app demonstrates a user-friendly image upload feature. Utilizing Rail
 
 This demo application is meant to showcase the practical use of advanced Rails functionalities like Active Storage and Turbo Frames, and how they can be used to create a dynamic and interactive user experience inside Rails. Additionally, the polymorphic relationship model enables to keep the database structure lean and scalable. 
 
+![Entity relations in the DB](https://github.com/donnamagi/rails-image-upload/blob/main/app/assets/images/ERD%20Image%20Galleries-2.svg)
+This demo app is a featureset for articles – 'users' and 'projects' are only on the diagram to illustrate the possibility of associating an image gallery to different models.
 
 ## Prerequisites
 - Ruby 3.0.0
@@ -30,9 +32,8 @@ bundle install
 ```
 
 ### Setting up the database
-This application uses PostgreSQL. Ensure you have PostgreSQL installed and running.
+This application uses PostgreSQL. Once you have PostgreSQL installed and running:
 
-Create and setup the database:
 ```bash
 rails db:create
 rails db:migrate

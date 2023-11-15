@@ -50,4 +50,4 @@ Also, a custom rake task for precompiling assets in development:
 rails server:start
 ```
 
-The application will be accessible at [http://localhost:3000](http://localhost:3000)http://localhost:3000
+The application will be accessible at [http://localhost:3000](http://localhost:3000)

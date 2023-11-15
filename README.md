@@ -1,24 +1,52 @@
-# README
+# Rails Image Upload
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Introduction
 
-Things you may want to cover:
+This Rails app demonstrates a user-friendly image upload feature. Utilizing Rails Active Storage combined with Turbo Frames, the app showcases dynamic but lean image upload capabilities.
 
-* Ruby version
+## Core features
 
-* System dependencies
+1. **Polymorphic Image Galleries**: The app leverages a polymorphic association to enable different models to have an associated image gallery, with minimal code repetition.
 
-* Configuration
+2. **User friendly uploads**: Users can upload one or multiple images at a time, enabling better UX. Formatting of the file uploads is handled by the image galleries controller.
 
-* Database creation
+3. **Reordering and deletion**: Users can easily rearrange their image galleries with drag-and-drop functionality, thanks to the `acts_as_list` gem and SortableJS. 
 
-* Database initialization
 
-* How to run the test suite
+This demo application is meant to showcase the practical use of advanced Rails functionalities like Active Storage and Turbo Frames, and how they can be used to create a dynamic and interactive user experience inside Rails. Additionally, the polymorphic relationship model enables to keep the database structure lean and scalable. 
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+## Prerequisites
+- Ruby 3.0.0
+- Rails 7
+- PostgreSQL
 
-* ...
+## Setup
+
+### Dependencies
+Install Ruby dependencies:
+```bash
+bundle install
+```
+
+### Setting up the database
+This application uses PostgreSQL. Ensure you have PostgreSQL installed and running.
+
+Create and setup the database:
+```bash
+rails db:create
+rails db:migrate
+```
+
+## Running the Application
+Start the server:
+```bash
+rails s
+```
+
+Also, a custom rake task for precompiling assets in development:
+```bash
+rails server:start
+```
+
+The application will be accessible at [http://localhost:3000](http://localhost:3000)http://localhost:3000

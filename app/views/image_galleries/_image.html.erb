@@ -1,6 +1,7 @@
-<div>
-  <%= image_tag(image.picture, :height => "40px") %>
-  <p><%= image.picture.filename.to_s %> </p>
-  <%= button_to('delete image', delete_image_image_gallery_path(@image_gallery, image), method: :delete) %>
-  <hr/>
+<div data-id="<%= image.id %>" class="col-12 p-2 my-1 border rounded" >
+  <div class="d-flex justify-content-between align-items-center">
+    <%= image_tag(image.picture, :height => "40px") %>
+    <p class="text-sm mb-0"><%= image.picture.filename.to_s %> </p>
+    <%= link_to('Delete', delete_image_image_gallery_path(@image_gallery, image), method: :delete) %>
+  </div>
 </div>

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class MultiUploadController extends Controller {
-  static targets = ["inputButton", "submitButton"]
+  static targets = ["inputButton", "submitButton", "files"]
 
   connect() {
     document.addEventListener("turbo:frame-load", this.showLatestInputFieldOnly.bind(this));
